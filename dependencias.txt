@@ -1,0 +1,6 @@
+npm install express
+npm install bcrypt
+npm install dotenv
+npm install mysql
+npm install jsonwebtoken
+npm install cors
