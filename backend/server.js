@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoute = require('./routes/authRoute');
+const adminRoute = require('./routes/adminRoute');
 // const authMiddleware = require('./middleware/authMiddleware');
 
 dotenv.config();
@@ -13,7 +14,9 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/api', authRoute);
+app.use('/api/auth', authRoute);
+
+app.use('/api/admin', adminRoute);
 
 app.listen(port, () => {
     console.log(`Servidor iniciado en http://localhost:${port}`);
