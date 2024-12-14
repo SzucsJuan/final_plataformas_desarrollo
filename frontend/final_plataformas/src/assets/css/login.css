@@ -1,0 +1,273 @@
+/* ROBOTO FONT */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto',sans-serif;
+}   
+.lol{
+    position: relative;
+    width: 470px;
+    height: 520px;
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, 0.753);
+    border: 1px solid #dddddd21;
+    border-radius: 10px;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.login-box{
+    position: relative;
+    width: 470px;
+    height: 420px;
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, 0.753);
+    border: 1px solid #dddddd21;
+    border-radius: 10px;
+}
+
+
+/* Add media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .login-box {
+        width: 80%;
+    }
+}
+
+.login-header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px 0 50px 0;
+}
+.login-header header{
+    font-family: 'Secular One', sans-serif;
+    color: black;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.login-header p{
+    color: black;
+}
+
+span {
+    color: #F15025; 
+    font-family: 'Secular One', sans-serif;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+}
+.input-box label{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: black;
+    transition: .15s ease-in-out;
+}
+.input-box input{
+    width: 100%;
+    height: 50px;
+}
+.input-box .input-field{
+    font-size: 1em;
+    color: #333;
+    padding-left: 15px;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+
+/* Add media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .input-box .input-field {
+        font-size: 0.9em;
+    }
+}
+
+.input-box input[type="password"]{
+    margin-bottom: 10px;
+}
+.input-box .input-field:focus{
+    border: 2px solid #F15025;
+}
+.input-field:focus ~ label, .input-field:valid ~ label{
+    top: -8px;
+    left: 12px;
+    font-size: 12px;
+    color: #F15025;
+    background: #FFF;
+    padding: 0 5px;
+}
+
+.forgot{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+section{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.774);
+}
+#check{
+    margin-right: 10px;
+}
+section .forgot-link{
+    font-weight: 500;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.774);
+}
+.input-submit{
+    font-family: 'Secular One', sans-serif;
+    font-size: 18px;
+    color: #FFF;
+    background: #F15025;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.middle-text{
+    position: relative;
+    width: 100%;
+    margin: 30px 0;
+}
+
+
+hr{
+    border: 1px solid #ddd;
+}
+
+.social-sign-in{
+    display: flex;
+    gap: 15px;
+}
+button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-google{
+    width: 100%;
+    height: 50px;
+    padding: 0 30px;
+    background: #FFF;
+    border: 1px solid #CCC;
+}
+.input-google img{
+    width: 25px;
+}
+.input-google p{
+    font-family: 'Secular One', sans-serif;
+    font-size: 16px;
+    width: 90%;
+}
+
+
+.input-google:hover,
+.input-submit:hover{
+    opacity: 0.9;
+}
+.sign-up{
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+}
+.sign-up p{
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(252, 252, 252);
+}
+.sign-up p>a{
+    text-decoration: none;
+    color: #F15025;
+    font-weight: 500;
+}
+
+#message {
+    margin-top: 15px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    display: none;
+}
+
+#message.success {
+    color: #4CAF50;
+    background-color: #E8F5E9;
+    border: 1px solid #4CAF50;
+}
+
+#message.error {
+    color: #F44336;
+    background-color: #FDECEA;
+    border: 1px solid #F44336;
+}
+
+/* Estilos básicos para el select */
+.input-box select {
+    width: 100%;
+    height: 45px;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.input-box select:focus {
+    border-color: #F15025;
+}
+
+.input-box select:valid {
+    background-color: #f4f4f4;
+}
+
+.input-box label {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 14px;
+    color: #333;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-box select:focus ~ label,
+.input-box select:valid ~ label {
+    top: -12px;
+    left: 12px;
+    font-size: 12px;
+    color: #F15025;
+    background-color: #FFF;
+    padding: 0 5px;
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translateX(-50%) translateY(-50%);
+}

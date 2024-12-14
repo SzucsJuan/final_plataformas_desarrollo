@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoute = require('./routes/authRoute');
 const adminRoute = require('./routes/adminRoute');
-// const authMiddleware = require('./middleware/authMiddleware');
 
 dotenv.config();
 

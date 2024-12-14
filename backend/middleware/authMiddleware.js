@@ -14,9 +14,17 @@ const verifyToken = (req, res, next) => {
   } catch (err) {
     return res
       .status(403)
-      .json({ message: "El Token es inválido o ya ha expirado" });
+      .json({ message: "El token es inválido o ya ha expirado" });
   }
 };
 
+const verifyAdmin = (req, res, next) => {
+  if (req.user.role !== "admin") {
+    return res
+      .status(403)
+      .json({ message: "Acceso denegado: solo para admins" });
+  }
+  next();
+};
 
-module.exports = verifyToken;
+module.exports = { verifyToken, verifyAdmin };
