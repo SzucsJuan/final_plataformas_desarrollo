@@ -1,0 +1,52 @@
+.banner-jumbotron {
+    background-image: url(../../public/images/banner.jpg) !important;
+    background-size: cover !important;
+    background-position: 40% !important;
+    height: 70vh !important;
+}
+
+.banner-jumbotron2{
+    background-image: url(../../public/images/Banner-tres.jpg);
+    background-size: cover;
+    background-position: 40%;
+    height: 70vh;
+}
+.jumbotron-title{
+    font-family: 'Secular One', sans-serif;
+}
+.jumbotron-title2{
+    font-family: 'Secular One', sans-serif;
+    -webkit-text-fill-color: #f3724f ;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+}
+
+.buttons-container{
+    font-family: 'Secular One', sans-serif;
+}
+
+.button1{
+    letter-spacing: 1px;
+    background: white !important;
+    transition: 0.8s ease-out !important;
+}
+
+.button1:hover{
+    box-shadow: 0 2px 20px white !important;
+    transition: 0.8s;
+}
+
+.button2{
+    letter-spacing: 1px;
+    background: white !important;
+    transition: 0.8s !important;
+}
+
+.button2:hover{
+    box-shadow: 0 2px 20px white !important;
+    transition: 0.8s;
+}
+
+a{
+    color: white;
+}

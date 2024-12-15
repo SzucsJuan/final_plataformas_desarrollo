@@ -38,11 +38,21 @@ const loginUser = async (req, res) => {
           process.env.JWT_SECRET,
           { expiresIn: "1h" }
         );
-        return res.status(200).json({ message: "Logueo exitoso", user: {id: user.id, role: user.role}, token});
-      } else if(user.role === "user"){
-          return res.status(200).json({message: "Logueo exitoso", user: {id: user.id, role: user.role}}) 
+        return res
+          .status(200)
+          .json({
+            message: "Logueo exitoso",
+            user: { id: user.id, role: user.role },
+            token,
+          });
+      } else if (user.role === "user") {
+        return res
+          .status(200)
+          .json({
+            message: "Logueo exitoso",
+            user: { id: user.id, role: user.role },
+          });
       }
-
     });
   } catch (error) {
     res.status(500).json({ error: "Error en el servidor" });

@@ -1,0 +1,18 @@
+.banner-jumbotron-nosotros{
+    background-image: url(../../public/images/Banner-dos.jpg);
+    background-size: cover;
+    background-position: 40%;
+    height: 50vh;
+}
+
+.text-style{
+    font-size: 20px;
+}
+
+.title{
+    color: #F15025;
+}
+
+.titulo{
+    padding-left: 2rem;
+}

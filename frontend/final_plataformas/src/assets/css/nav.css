@@ -1,0 +1,56 @@
+@import'./utilities.css';
+
+a {
+    color: #F15025 !important;
+}
+
+.title-style {
+    color: #EBEBEB !important;
+}
+
+.form-style {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.search-style {
+    border-radius: 30px !important;
+    transition: 1.2s ease-out !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.search-style:hover {
+    box-shadow: 0 2px 10px #f3724f !important;
+    transition: 1.2s ease-in;
+}
+
+.navbar-toggler {
+    transition: 1.2s ease-out !important;
+}
+
+.navbar-toggler:hover {
+    box-shadow: 0 2px 10px #f3724f !important;
+    transition: 1.2s ease-in;
+}
+
+.navbar-toggler:focus {
+    border: none !important;
+    outline: none !important;
+}
+
+@media (max-width: 765px) {
+    .search-style {
+        display: none !important;
+    }
+
+    .dropdown-menu {
+        display: none !important;
+    }
+
+    .dropdown-toggle::after {
+        display: none !important;
+    }
+}

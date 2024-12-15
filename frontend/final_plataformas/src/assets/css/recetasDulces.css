@@ -1,0 +1,11 @@
+.banner-jumbotron-recetas-dulce{
+    background-image: url(../img/Banner-recetas-dulce.jpg);
+    background-size: cover;
+    background-position: 40%;
+    height: 50vh;
+}
+
+.titulo{
+    padding-left: 3rem;
+    color: #484849;
+}

@@ -1,0 +1,10 @@
+
+.table{
+    --bs-table-hover-color: #ffffff !important;
+    --bs-table-hover-bg: #f3724f !important;
+}
+
+.table-dark{
+    --bs-table-bg: #f15025 !important;
+    --bs-table-border-color: #f15025 !important;
+}

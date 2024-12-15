@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/table.css">
+    <link rel="shortcut icon" href="../../public/images/DigitalRecipes.jpeg">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/84afdc28bf.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>DR - Listado de Recetas</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid d-flex justify-content-between">
+            <a class="navbar-brand" href="../home.html">
+                <h1>DR</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex form-style col-lg-12" role="search">
+                    <input class="form-control me-2 search-style" type="search" placeholder="¿Y hoy, para que estás?"
+                        aria-label="Search">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../opiniones.html">Opiniones</a>
+                        </li>
+                        <li id="randomHeader" class="nav-item">
+                            <a class="nav-link" href="#">Random</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../nosotros.html">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                        <li class="nav-item" id="adminProfile">
+                            <a href="#" id="profileIcon" class="nav-link" data-bs-toggle="modal"
+                                data-bs-target="#roleModal">
+                                <span class="material-icons">account_circle</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../../login.html" id="profileIcon" class="nav-link">
+                                <span class="material-icons">login</span>
+                            </a>
+                        </li>
+                        <div class="modal fade" id="roleModal" tabindex="-1" aria-labelledby="roleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="roleModalLabel">Panel de Administrador</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <a href="listado_usuarios.html" class="btn btn-primary w-100 mb-2">
+                                            Administrar Usuarios <span class="ms-2">👥</span>
+                                        </a>
+                                        <a href="listado_recetas.html" class="btn btn-primary w-100 mb-2">
+                                            Administrar Recetas <span class="ms-2">🍝</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-4">
+        <h1 class="text-center">Listado de recetas activas
+            <button id="agregarReceta" class="btn btn-success btn-sm ms=2"
+                onclick="window.location.href='cargar_recetas.html'">+</button>
+        </h1>
+        <table class="table table-sm table-striped table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th class="hidden">Id</th>
+                    <th>Nombre</th>
+                    <th>Tipo receta</th>
+                    <th>Tiempo Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <ul class='pagination'>
+
+            </ul>
+        </div>
+    </div>
+    <footer class="text-center text-lg-start bg-light text-muted footer">
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <div class="d-flex mb-2">
+                            <span class="material-icons">restaurant</span>
+                            <h4>DigitalRecipes</h4>
+                        </div>
+                        <p>
+                            Esta es una página destinada a hacerte más facil la tarea de cocinar, brindándote recetas
+                            nuevas y deliciosas todos los dias!
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4 text-nowrap">
+                            Conoce nuestro sitio
+                        </h6>
+                        <p>
+                            <a href="../home.html" class="text-reset text-decoration-none">Inicio</a>
+                        </p>
+                        <p>
+                            <a href="../opiniones.html" class="text-reset text-decoration-none">Opiniones</a>
+                        </p>
+                        <p>
+                            <a href="../nosotros.html" class="text-reset text-decoration-none">Nosotros</a>
+                        </p>
+                        <p>
+                            <a href="../contacto.html" class="text-reset text-decoration-none">Contacto</a>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Nuestras redes
+                        </h6>
+                        <p>
+                            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i><span
+                                    class="space">Digital.Recipes</span></a>
+                        </p>
+                        <p>
+                            <a href="https://es-la.facebook.com/" target="_blank"><i class="fab fa-facebook"></i><span
+                                    class="space">Digital.Recipes</span></a>
+                        </p>
+                        <p>
+                            <a href="https://twitter.com/home" target="_blank"><i class="fab fa-twitter"></i><span
+                                    class="space">Digital.Recipes</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const randomHeader = document.querySelector('a.nav-link[href="#"]');
+            if (randomHeader) {
+                randomHeader.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    alert("En desarrollo");
+                });
+            }
+            const sorprendemeBtn = document.querySelector('.button1');
+            if (sorprendemeBtn) {
+                sorprendemeBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    alert("En desarrollo");
+                });
+            }
+        })
+    </script>
+    <!-- <script src="/src/assets/js/cargar_recetas.js"></script>
+    <script src="/src/assets/js/lista_recetas.js"></script> -->
+
+</body>
+
+</html>
