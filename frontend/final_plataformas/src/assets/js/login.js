@@ -3,21 +3,24 @@ import { loginUser } from "../../services/authServices";
 document.getElementById("login").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const messageLogin = document.getElementById("message");
 
+    console.log("Email:", email);
+    console.log("Password:", password);
+
     try {
-        // Llamada al servicio para autenticar al usuario
-        const response = await loginUser(username, password);
-        
+        const response = await loginUser(email, password);
+        console.log("Respuesta del servidor:", response);
         localStorage.setItem("user", JSON.stringify(response.user));
         localStorage.setItem("role", response.user.role);
         localStorage.setItem("token", response.token);
         
         window.location.href = "src/views/home.html";
     } catch (error) {
-        messageLogin.textContent = "El usuario o la contraseña son incorrectos.";
+        console.error("Error de autenticación:", error.response || error);
+        messageLogin.textContent = "El mail o la contraseña son incorrectos.";
         messageLogin.className = "error";
         messageLogin.style.display = "block";
     }
