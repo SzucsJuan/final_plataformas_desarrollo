@@ -6,16 +6,30 @@ export const loginUser = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/login`, { email, password });
     console.log("Respuesta desde el backend:", response.data);
-    
-    if (response.data && response.data.token) {
-      console.log("Datos recibidos correctamente", response.data);
-      return response.data;
+
+    if (response.data) {
+      const { token, user } = response.data;
+
+      if (!user || !user.role) {
+        throw new Error("Rol no identificado o faltante en la respuesta");
+      }
+
+      if (user.role === "admin") {
+        if (token) {
+          console.log("Admin autenticado");
+          return response.data;
+        } else {
+          throw new Error("Falta el token para el administrador");
+        }
+      } else {
+        console.log("Usuario autenticado");
+        return response.data; // Usuario regular
+      }
     } else {
-      console.log("No se recibió el token");
-      throw new Error("Token no encontrado en la respuesta");
+      throw new Error("Datos faltantes en la respuesta del servidor");
     }
   } catch (error) {
-    console.error("Error de autenticación:", error);
+    console.error("Error de autenticación:", error.message);
     throw error;
   }
 };

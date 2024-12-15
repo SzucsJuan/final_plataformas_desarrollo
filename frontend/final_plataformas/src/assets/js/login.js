@@ -15,8 +15,10 @@ document.getElementById("login").addEventListener("submit", async function(event
         console.log("Respuesta del servidor:", response);
         localStorage.setItem("user", JSON.stringify(response.user));
         localStorage.setItem("role", response.user.role);
-        localStorage.setItem("token", response.token);
-        
+        if(response.token){
+            localStorage.setItem("token", response.token);
+        };
+
         window.location.href = "src/views/home.html";
     } catch (error) {
         console.error("Error de autenticación:", error.response || error);

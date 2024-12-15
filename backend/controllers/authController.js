@@ -43,19 +43,6 @@ const loginUser = async (req, res) => {
           return res.status(200).json({message: "Logueo exitoso", user: {id: user.id, role: user.role}}) 
       }
 
-
-      // const token = jwt.sign(
-      //   { id: user.id, role: user.role },
-      //   process.env.JWT_SECRET,
-      //   { expiresIn: "1h" }
-      // );
-
-      // if (user.role === "admin") {
-      //   res.status(200).json({ message: "Logueo exitoso", token, role: user.role });
-      // } else {
-      //   res.status(200).json({ message: "Logueo exitoso", role: user.role });
-      // }
-
     });
   } catch (error) {
     res.status(500).json({ error: "Error en el servidor" });
