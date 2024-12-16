@@ -2,7 +2,7 @@ const db = require("../config/database");
 const jwt = require("jsonwebtoken");
 
 const addRecipe = (req, res) => {
-  const { nombre, tiempo_coccion, ingredientes, descripcion } = req.body;  
+  const { nombre, tiempo_coccion, ingredientes, descripcion } = req.body;
   const token = req.headers.authorization?.split(" ")[1];
   // parte de la validacion del token (comentado)
   if (!token) {
@@ -30,19 +30,16 @@ const addRecipe = (req, res) => {
           console.error(err);
           return res.status(500).json({ error: "Error al guardar la receta." });
         }
-        res
-          .status(201)
-          .json({
-            message: "Receta creada exitosamente.",
-            recetaId: result.insertId,
-          });
+        res.status(201).json({
+          message: "Receta creada exitosamente.",
+          recetaId: result.insertId,
+        });
       }
     );
   } catch (error) {
     console.error("Error de autenticacion", error);
     return res.status(403).json({ error: "Token invalido o expirado." });
   }
-
 };
 const deleteRecipe = (req, res) => {
   const { id } = req.params;
@@ -101,4 +98,15 @@ const updateRecipe = (req, res) => {
   });
 };
 
-module.exports = { addRecipe, deleteRecipe, updateRecipe };
+const getRecetas = async (req, res) => {
+  const query = "SELECT * FROM recetas";
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error en el servidor" });
+    }
+    res.status(200).json(results);
+  });
+};
+
+module.exports = { addRecipe, deleteRecipe, updateRecipe, getRecetas };

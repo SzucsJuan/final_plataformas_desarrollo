@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
   const uploadButton = document.getElementById("subirReceta");
   const nombre = document.getElementById("nombre");
-  //const tipo = document.getElementById('tipo');
   const tiempo_coccion = document.getElementById("tiempo_coccion");
-  //const tiempo_preparacion = document.getElementById('tiempo_preparacion');
   const ingredientes = document.getElementById("ingredientes");
   const descripcion = document.getElementById("descripcion");
   //const imagen = document.getElementById('imagen');
@@ -22,22 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
   uploadButton.addEventListener("click", async (e) => {
     e.preventDefault();
 
-const recipeData = {
-    nombre: nombre.value,
-    tiempo_coccion: tiempo_coccion.value,
-    ingredientes: ingredientes.value,
-    descripcion: descripcion.value,
-  };
+    const recipeData = {
+      nombre: nombre.value,
+      tiempo_coccion: tiempo_coccion.value,
+      ingredientes: ingredientes.value,
+      descripcion: descripcion.value,
+    };
 
-  const token = localStorage.getItem('token');
-  
-  try {
-    const response = await recipeService.addRecipe(recipeData, token);
-    console.log("Receta agregada:", response);
-    form.reset();
-  } catch (error) {
-    console.log("Error al agregar la receta:", error);
-  }
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await recipeService.addRecipe(recipeData, token);
+      console.log("Receta agregada:", response);
+      form.reset();
+    } catch (error) {
+      console.log("Error al agregar la receta:", error);
+    }
   });
 
   btnListadoRecetas.addEventListener("click", () => {
