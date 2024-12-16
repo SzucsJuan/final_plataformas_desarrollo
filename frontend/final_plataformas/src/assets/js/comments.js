@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const commentItem = document.createElement('li');
                 commentItem.classList.add('list-group-item');
                 commentItem.innerHTML = `
-                <strong>${comment.name}</strong>
                 <span class="text-muted">(${comment.valoracion}/10)</span>
                 <p>${comment.comentario}</p>
                 `;

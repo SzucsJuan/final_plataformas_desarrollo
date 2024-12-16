@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const addRecipe = (req, res) => {
   const { nombre, tiempo_coccion, ingredientes, descripcion } = req.body;
   const token = req.headers.authorization?.split(" ")[1];
-  // parte de la validacion del token (comentado)
+  
   if (!token) {
     return res.status(401).json({ error: "No se proporciono un token valido" });
   }
@@ -69,8 +69,8 @@ const updateRecipe = (req, res) => {
   const { id } = req.params;
   const { nombre, tiempo_coccion, ingredientes, descripcion } = req.body;
 
-  if (!nombre || !tiempo_coccion || !ingredientes || !descripcion) {
-    return res.status(400).json({ error: "Los campos son obligatorios" });
+  if (!nombre) {
+    return res.status(400).json({ error: "El nombre de la receta es obligatorio." });
   }
   const checkQuery = `SELECT * FROM recetas WHERE id = ?`;
   db.query(checkQuery, [id], (err, results) => {
@@ -98,7 +98,7 @@ const updateRecipe = (req, res) => {
   });
 };
 
-const getRecetas = async (req, res) => {
+const getRecipes = async (req, res) => {
   const query = "SELECT * FROM recetas";
   db.query(query, (err, results) => {
     if (err) {
@@ -109,4 +109,4 @@ const getRecetas = async (req, res) => {
   });
 };
 
-module.exports = { addRecipe, deleteRecipe, updateRecipe, getRecetas };
+module.exports = { addRecipe, deleteRecipe, updateRecipe, getRecipes };

@@ -2,12 +2,12 @@ const db = require('../config/database');
 
 const updateUser = async (req, res) => {
     const {id} = req.params;
-    const {name, email, role} = req.body;
+    const {name, email} = req.body;
 
     try{
         const result = await db.query(
-            'UPDATE users SET name = ?, email = ?, role = ? WHERE id = ? AND role = "user"',
-            [name, email, role, id]
+            'UPDATE users SET name = ?, email = ? WHERE id = ? AND role = "user"',
+            [name, email, id]
         );
 
         if(result.affectedRows === 0){

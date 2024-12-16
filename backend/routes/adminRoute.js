@@ -10,7 +10,7 @@ const recipeController = require('../controllers/recipeController');
 router.post('/recetas', recipeController.addRecipe)
 router.delete('/recetas/:id', recipeController.deleteRecipe);
 router.put('/recetas/:id', recipeController.updateRecipe)
-router.get('/recetas', recipeController.getRecetas);
+router.get('/recetas', recipeController.getRecipes);
 router.get('/users', adminController.getUsers);
 router.put('/users/:id', adminController.updateUser);
 router.delete('/users/:id', adminController.deleteUser);

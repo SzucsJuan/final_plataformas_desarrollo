@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const recetas = await recipeService.getRecetas(token);
+    const recetas = await recipeService.getRecipes(token);
     // console.log("Recetas obtenidas:", recetas);
 
     tableBody.innerHTML = "";
@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       row.innerHTML = `
                 <td class="hidden">${receta.id}</td>
                 <td>${receta.nombre}</td>
+                <td>${receta.tiempo_coccion}</td>
+                <td>${receta.ingredientes}</td>
+                <td>${receta.descripcion}</td>
                 <td>
                     <button class="btn btn-primary btn-sm me-2" onclick="editarReceta(${receta.id}, '${receta.nombre}')">✏️</button>
                     <button class="btn btn-danger btn-sm" onclick="eliminarReceta(${receta.id})">🗑️</button>
@@ -57,51 +60,49 @@ async function eliminarReceta(recipeId) {
   }
 }
 
-async function editarReceta(
-  recipeId,
-  currentNombre,
-  currentTiempo,
-  currentIngredientes,
-  currentDescripcion
-) {
+async function editarReceta(recipeId, currentNombre, currentTiempo, currentIngredientes, currentDescripcion) {
   const token = localStorage.getItem("token");
 
-  const nuevoNombre = prompt("Edita el nombre de la receta:", currentNombre);
-  const nuevoTiempo = prompt(
-    "Edita el tiempo de cocción de la receta:",
-    currentTiempo
-  );
-  const nuevoIngredientes = prompt(
-    "Edita los ingredientes de la receta:",
-    currentIngredientes
-  );
-  const nuevaDescripcion = prompt(
-    "Edita la descripción de la receta:",
-    currentDescripcion
-  );
+  const modal = new bootstrap.Modal(document.getElementById('editarRecetaModal'));
+  modal.show();
 
-  if (!nuevoNombre || nuevoNombre.trim() === "") {
-    alert("El nombre no puede estar vacío.");
-    return;
-  }
+  document.getElementById('nombreReceta').value = currentNombre;
+  document.getElementById('tiempoReceta').value = currentTiempo;
+  document.getElementById('ingredientesReceta').value = currentIngredientes;
+  document.getElementById('descripcionReceta').value = currentDescripcion;
 
-  const updatedData = {
-    nombre: nuevoNombre,
-    tiempo_coccion: nuevoTiempo,
-    ingredientes: nuevoIngredientes,
-    descripcion: nuevaDescripcion,
-  };
+  const formEditarReceta = document.getElementById('formEditarReceta');
+  
+  formEditarReceta.addEventListener('submit', async function (event) {
+    event.preventDefault();
 
-  console.log("Datos actualizados:", updatedData);
+    const nuevoNombre = document.getElementById('nombreReceta').value;
+    const nuevoTiempo = document.getElementById('tiempoReceta').value;
+    const nuevoIngredientes = document.getElementById('ingredientesReceta').value;
+    const nuevaDescripcion = document.getElementById('descripcionReceta').value;
 
-  try {
-    await recipeService.updateRecipe(recipeId, updatedData, token);
-    alert("Receta actualizada con éxito.");
-    window.location.reload();
-  } catch (error) {
-    console.error("Error al actualizar receta:", error);
-    alert("Error al actualizar la receta. Inténtalo nuevamente.");
-  }
+    if (!nuevoNombre || nuevoNombre.trim() === "") {
+      alert("El nombre no puede estar vacío.");
+      return;
+    }
+
+    const updatedData = {
+      nombre: nuevoNombre,
+      tiempo_coccion: nuevoTiempo,
+      ingredientes: nuevoIngredientes,
+      descripcion: nuevaDescripcion,
+    };
+
+    try {
+      await recipeService.updateRecipe(recipeId, updatedData, token);
+      alert("Receta actualizada con éxito.");
+      modal.hide();
+      window.location.reload();
+    } catch (error) {
+      console.error("Error al actualizar receta:", error);
+      alert("Error al actualizar la receta. Inténtalo nuevamente.");
+    }
+  });
 }
 
 window.eliminarReceta = eliminarReceta;

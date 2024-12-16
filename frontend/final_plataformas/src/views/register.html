@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR - Registro</title>
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="shortcut icon" href="/src/public/images/DigitalRecipes.jpeg" />
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <video muted autoplay loop>
+        <source src="../public/video/video_login.mp4" type="video/mp4">
+    </video>
+    <div class="login-box" style="height: 570px;">
+        <div class="login-header">
+            <header>Esta es la pantalla de registro</header>
+            <p>¡Nos alegra que te sumes a la familia de <span>Digital Recipes</span>!</p>
+        </div>
+        <form id="register">
+            <div class="input-box">
+                <input type="text" class="input-field" name="name" id="name" 
+                autocomplete="off" required>
+                <label for="name">Nombre de Usuario</label>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" name="email" id="email" 
+                autocomplete="off" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" name="password" id="password" 
+                autocomplete="off" required>
+                <label for="password">Contraseña</label>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="input-submit" value="Registrarse">
+            </div>
+        </form>
+        <div class="sign-up">
+            <p>¿Ya tienes cuenta? <a href="login.html">Inicia Sesión</a></p>
+        </div>
+        <div id="message" class="hidden"></div>
+    </div>
+</body>
+<script type="module" src="../assets/js/register.js"></script>
+</html>

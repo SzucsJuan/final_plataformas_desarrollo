@@ -18,7 +18,7 @@ profileIcon.addEventListener("click", function (event) {
 
     const role = localStorage.getItem("role");
     if (role === "admin") {
-        adminOptions.classList.remove("hidden");
+        adminProfile.classList.remove("hidden");
     }
 });
 

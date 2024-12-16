@@ -94,9 +94,9 @@
                 <tr>
                     <th class="hidden">Id</th>
                     <th>Nombre</th>
-                    <th class="hidden">Tiempo de Coccion</th>
-                    <th class="hidden">Ingredientes</th>
-                    <th class="hidden">Descripcion</th>
+                    <th>Tiempo de Coccion</th>
+                    <th>Ingredientes</th>
+                    <th>Descripcion</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -162,6 +162,38 @@
             </div>
         </section>
     </footer>
+    <!-- Modal editar recetas -->
+    <div class="modal fade" id="editarRecetaModal" tabindex="-1" aria-labelledby="editarRecetaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editarRecetaModalLabel">Editar Receta</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="formEditarReceta">
+                <div class="mb-3">
+                  <label for="nombreReceta" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombreReceta" required>
+                </div>
+                <div class="mb-3">
+                  <label for="tiempoReceta" class="form-label">Tiempo de cocción</label>
+                  <input type="text" class="form-control" id="tiempoReceta" required>
+                </div>
+                <div class="mb-3">
+                  <label for="ingredientesReceta" class="form-label">Ingredientes</label>
+                  <textarea class="form-control" id="ingredientesReceta" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="descripcionReceta" class="form-label">Descripción</label>
+                  <textarea class="form-control" id="descripcionReceta" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar receta</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const randomHeader = document.querySelector('a.nav-link[href="#"]');

@@ -61,22 +61,22 @@ const recipeService = {
     }
   },
 
-  async getRecetas(token) {
+  async getRecipes(token = null) {
     try {
-      const response = await axios.get(`${API_URL}/recetas`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return response.data;
+        const headers = token
+            ? { Authorization: `Bearer ${token}` }
+            : {};
+
+        const response = await axios.get(`${API_URL}/recetas`, { headers });
+        return response.data;
     } catch (error) {
-      console.error(
-        "Error al obtener recetas:",
-        error.response?.data || error.message
-      );
-      throw error;
+        console.error(
+            "Error al obtener recetas:",
+            error.response?.data || error.message
+        );
+        throw error;
     }
-  },
+}
 };
 
 export default recipeService;
