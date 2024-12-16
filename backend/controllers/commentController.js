@@ -3,31 +3,7 @@ const db = require('../config/database');
 
 const addComment = (req, res) => {
     const{comentario, valoracion, recetaId} = req.body;
-    // parte de la validacion del token (comentado)
     const token = req.headers.authorization?.split(" ")[1]; 
-    // const userId = 1;
-    //hardcodeo para probar el flujo sin auth
-    
-    // if (!comentario || !valoracion || !recetaId) {
-        //     return res.status(400).json({ error: "Todos los campos son obligatorios" });
-        // }
-        
-        // if (valoracion < 1 || valoracion > 5) {
-            //     return res.status(400).json({ error: "La valoración debe estar entre 1 y 5" });
-            // }
-            
-            // const query = `
-    //     INSERT INTO comentarios (comentario, valoracion, user_id, receta_id)
-    //     VALUES (?, ?, ?, ?)
-    // `;
-
-    // db.query(query, [comentario, valoracion, userId, recetaId], (err, result) => {
-    //     if (err) {
-    //         console.error(err);
-    //         return res.status(500).json({ error: "Error al guardar el comentario" });
-    //     }
-    //     res.status(201).json({ message: "Comentario publicado con éxito", comentarioId: result.insertId });
-    // });
 
     if(!token) {
         return res.status(401).json({error: "No se proporciono un token"});
@@ -71,4 +47,15 @@ const addComment = (req, res) => {
     };
 };
 
-module.exports = {addComment};
+const getComments = async (req, res) => {
+    const query = "SELECT * FROM comentarios";
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Error en el servidor" });
+      }
+      res.status(200).json(results);
+    });
+  };
+
+module.exports = {addComment, getComments};

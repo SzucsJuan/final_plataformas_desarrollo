@@ -15,7 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/auth', authRoute);
-app.use('/api', commentRoute);
+app.use('/api/', commentRoute);
 app.use('/api/admin', adminRoute);
 
 app.listen(port, () => {

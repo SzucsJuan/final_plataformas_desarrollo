@@ -1,12 +1,21 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/";
+const API_URL = "http://localhost:3000/api";
 
-export const addComment = async (comentario, valoracion, recetaId) => {
-    try {
-        const response = await axios.post(`${API_URL}comentarios`, { comentario, valoracion, recetaId });
-        console.log("Respuesta desde el backend:", response.data);
-    } catch (error) {
-        console.error("Error al guardar el comentario:", error);
+const commentsService = {
+    async getComments() {
+        try {
+          const response = await axios.get(`${API_URL}/comentarios`);
+          return response.data;
+        } catch (error) {
+          console.error(
+            "Error al obtener los comentarios:",
+            error.response?.data || error.message
+          );
+          throw error;
+        }
     }
-}
+};
+
+export default commentsService;
+
