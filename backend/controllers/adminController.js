@@ -36,4 +36,15 @@ const deleteUser = async (req, res) => {
     }
 };
 
-module.exports = {updateUser, deleteUser};
+const getUsers = async (req, res) => {
+    const query = "SELECT * FROM users WHERE role = 'user'";
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Error en el servidor" });
+      }
+      res.status(200).json(results);
+    });
+  };
+
+module.exports = {updateUser, deleteUser, getUsers};

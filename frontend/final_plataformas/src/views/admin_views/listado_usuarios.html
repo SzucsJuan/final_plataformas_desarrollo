@@ -90,9 +90,11 @@
         <table class="table table-sm table-striped table-hover">
             <thead class="table-dark">
                 <tr>
-                    <th>Usuario</th>
-                    <th>Contraseña</th>
-                    <th>Tipo usuario</th>
+                    <th class="hidden">Id</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th class="hidden">Password</th>
+                    <th class="hidden">Rol</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -176,8 +178,7 @@
             }
         })
     </script>
-    <!-- <script src="../../assets/js/gestion_users.js"></script>
-    <script src="../../assets/js/cargar_recetas.js"></script> -->
+    <script type="module" src="/src/assets/js/users_data.js"></script>
 </body>
 
 </html>
