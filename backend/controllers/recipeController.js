@@ -2,7 +2,7 @@ const db = require("../config/database");
 const jwt = require("jsonwebtoken");
 
 const addRecipe = (req, res) => {
-  const { nombre, tiempo_coccion, ingredientes, descripcion } = req.body;
+  const { nombre, tiempo_coccion, ingredientes, descripcion, imagen } = req.body;
   const token = req.headers.authorization?.split(" ")[1];
   
   if (!token) {
@@ -18,13 +18,20 @@ const addRecipe = (req, res) => {
         .json({ error: "Los campos no pueden quedar vacios." });
     }
 
+    let imageData = imagen;
+    if (imagen.startsWith('data:image')) {
+    imageData = imagen.split(',')[1]; // Esto elimina el prefijo "data:image/jpeg;base64,"
+    }
+    const imageBuffer = Buffer.from(imageData, 'base64');
+
+
     const query = `
-        INSERT INTO recetas (nombre, ingredientes, tiempo_coccion, descripcion, user_id)
-        VALUES (?,?,?,?,?)
+        INSERT INTO recetas (nombre, ingredientes, tiempo_coccion, descripcion, imagen, user_id)
+        VALUES (?,?,?,?,?,?)
         `;
     db.query(
       query,
-      [nombre, ingredientes, tiempo_coccion, descripcion, userId],
+      [nombre, ingredientes, tiempo_coccion, descripcion, imageBuffer, userId],
       (err, result) => {
         if (err) {
           console.error(err);
@@ -105,6 +112,15 @@ const getRecipes = async (req, res) => {
       console.error(err);
       return res.status(500).json({ error: "Error en el servidor" });
     }
+
+    // Convertir el Buffer de la imagen a base64
+    results.forEach(receta => {
+      if (receta.imagen) {
+        receta.imagen = receta.imagen.toString('base64'); // Convertir el Buffer a base64
+        receta.imagen = `data:image/jpeg;base64,${receta.imagen}`; // Agregar el prefijo necesario
+      }
+    });
+
     res.status(200).json(results);
   });
 };
