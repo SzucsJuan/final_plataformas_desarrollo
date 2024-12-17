@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tiempo_coccion = document.getElementById("tiempo_coccion");
   const ingredientes = document.getElementById("ingredientes");
   const descripcion = document.getElementById("descripcion");
-  //const imagen = document.getElementById('imagen');
+  const imagenInput = document.getElementById('imagen');
   const btnListadoRecetas = document.getElementById("btnListadoRecetas");
 
   const token = localStorage.getItem("token");
@@ -20,22 +20,71 @@ document.addEventListener("DOMContentLoaded", () => {
   uploadButton.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    const recipeData = {
-      nombre: nombre.value,
-      tiempo_coccion: tiempo_coccion.value,
-      ingredientes: ingredientes.value,
-      descripcion: descripcion.value,
+    if (!imagenInput.files[0]) {
+      alert("Por favor selecciona una imagen");
+      return;
+    }
+
+    const file = imagenInput.files[0];
+
+    // Reducir el tamaño de la imagen usando canvas
+    const resizeImage = (file, maxWidth, maxHeight, callback) => {
+      
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+
+          let width = img.width;
+          let height = img.height;
+
+          // Calcular las dimensiones proporcionales
+          if (width > height) {
+            if (width > maxWidth) {
+              height = (height * maxWidth) / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width = (width * maxHeight) / height;
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Convertir a Base64
+          const dataUrl = canvas.toDataURL("image/jpeg", 0.7); // 0.7 para compresión adicional
+          callback(dataUrl);
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
     };
 
-    const token = localStorage.getItem("token");
+    resizeImage(file, 800, 800, async (imagenBase64) => {
+      const recipeData = {
+        nombre: nombre.value,
+        tiempo_coccion: tiempo_coccion.value,
+        ingredientes: ingredientes.value,
+        descripcion: descripcion.value,
+        imagen: imagenBase64, // Imagen comprimida en Base64
+      };
 
-    try {
-      const response = await recipeService.addRecipe(recipeData, token);
-      console.log("Receta agregada:", response);
-      form.reset();
-    } catch (error) {
-      console.log("Error al agregar la receta:", error);
-    }
+      try {
+        const response = await recipeService.addRecipe(recipeData, token);
+        console.log("Receta agregada:", response);
+        alert("Receta agregada exitosamente.");
+        form.reset();
+      } catch (error) {
+        console.error("Error al agregar la receta:", error);
+        alert("Hubo un error al agregar la receta. Intenta nuevamente.");
+      }
+    });
   });
 
   btnListadoRecetas.addEventListener("click", () => {

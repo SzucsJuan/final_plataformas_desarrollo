@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (recetas && recetas.length > 0) {
             recetas.forEach((receta) => {
+                console.log("Imagen de la receta:", receta.imagen);
                 if (typeof receta.ingredientes === "string") {
                     receta.ingredientes = receta.ingredientes.split(",");
                 }
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 recetaElement.innerHTML = `
                     <div class="card h-100">
-                        <img src="${receta.imagen || "../public/images/default-recipe.jpg"}" class="card-img-top" alt="${receta.nombre}">
+                        <img src="${receta.imagen || "../public/images/banner.jpg"}" class="card-img-top" alt="${receta.nombre}">
                         <div class="card-body">
                             <h5 class="card-title">${receta.nombre}</h5>
                             <p class="card-text mt-2"><strong>Ingredientes:</strong> ${receta.ingredientes}</p>
