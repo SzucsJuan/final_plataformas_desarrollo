@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       row.innerHTML = `
                 <td class="hidden">${receta.id}</td>
                 <td>${receta.nombre}</td>
-                <td>${receta.tiempo_coccion}</td>
-                <td>${receta.ingredientes}</td>
-                <td>${receta.descripcion}</td>
+                <td class="hidden">${receta.tiempo_coccion}</td>
+                <td class="hidden">${receta.ingredientes}</td>
+                <td class="hidden">${receta.descripcion}</td>
                 <td>
                     <button class="btn btn-primary btn-sm me-2" onclick="editarReceta(${receta.id}, '${receta.nombre}')">✏️</button>
                     <button class="btn btn-danger btn-sm" onclick="eliminarReceta(${receta.id})">🗑️</button>
